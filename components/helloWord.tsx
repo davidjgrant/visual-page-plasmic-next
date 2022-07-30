@@ -11,7 +11,7 @@ export default function HelloWorld(
   hideHeading?: boolean
 }) {
 return(
-  <div style={{ padding: 64 }} className={className}>
+  <div style={{ padding: 16 }} className={className}>
     {!hideHeading && <h1>My Hero</h1>}
     {children}
   </div>

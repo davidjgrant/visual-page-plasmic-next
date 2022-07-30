@@ -1,4 +1,5 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
+import Collapse from "./components/collapse";
 import HelloWorld from "./components/helloWord";
 
 export const PLASMIC = initPlasmicLoader({
@@ -13,7 +14,7 @@ export const PLASMIC = initPlasmicLoader({
   // For development, you can set preview to true, which will use the unpublished
   // project, allowing you to see your designs without publishing.  Please
   // only use this for development, as this is significantly slower.
-  preview: false,
+  preview: true,
 });
 
 // You can register any code components that you want to use here; see
@@ -23,7 +24,8 @@ export const PLASMIC = initPlasmicLoader({
 // http://localhost:3000/plasmic-host).  See
 // https://docs.plasmic.app/learn/app-hosting/#set-a-plasmic-project-to-use-your-app-host
 
-PLASMIC.registerComponent(HelloWorld, {
+PLASMIC.registerComponent(
+  HelloWorld, {
   name: 'Hello World',
   props: {
     children: {
@@ -32,5 +34,21 @@ PLASMIC.registerComponent(HelloWorld, {
     hideHeading: {
       type: 'boolean'
     },
+  }
+});
+
+PLASMIC.registerComponent(
+  Collapse, {
+  name: 'Collapse',
+  props: {
+    title: {
+      type: 'slot',
+      defaultValue: 'This is the title',
+    },
+    children: {
+      type: 'slot',
+      defaultValue: 'This is the body',
+    },
+    previewShown: 'boolean',
   }
 });
